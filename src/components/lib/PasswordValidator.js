@@ -18,7 +18,7 @@ function PasswordValidator() {
                     minNumbers:1,
                     minSymbol:1
                 })){
-                    setPasswordError("Is Not Strong Password")
+                    setPasswordError("Password is not Strong")
                 }
 
                 if(isStrongPassword(password,
@@ -28,7 +28,7 @@ function PasswordValidator() {
                     minNumbers:1,
                     minSymbol:1
                 })){
-                    setPasswordError("Is Strong Password")
+                    setPasswordError("Password Is Strong")
                 }
             }
         }
