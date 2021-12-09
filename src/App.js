@@ -7,14 +7,21 @@ import requests from "./components/lib/requests";
 import "./App.css";
 import Signin from "./components/Signin/Signin";
 import SignUp from "./components/Signup/Signup";
+import Banner from "./components/Banner/Banner";
 
 function App() {
   return (
-    <div className="App">
-      <Row title="TV's" fetchUrl={requests.fetchTv} />
+    <div className="app">
+      {/* nav */}
+      <Banner />
+      <Row
+        title="Original Video Animation"
+        fetchUrl={requests.fetchOVA}
+        isLargeRow
+      />
+      <Row title="TV Shows" fetchUrl={requests.fetchTv} />
       <Row title="Movies" fetchUrl={requests.fetchMovies} />
-      <Row title="Special's" fetchUrl={requests.fetchSpecial} />
-      <Row title="OVA's" fetchUrl={requests.fetchOVA} />
+      <Row title="Special Episodes" fetchUrl={requests.fetchSpecial} />
 
       {/* <Router>
         <Routes>

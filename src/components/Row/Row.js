@@ -3,7 +3,7 @@ import axiosAPI from "../lib/axiosApi";
 import Loading from "../lib/Loading";
 import "./Row.css";
 
-function Row({ title, fetchUrl }) {
+function Row({ title, fetchUrl, isLargeRow }) {
   const [animes, setAnimes] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -26,12 +26,13 @@ function Row({ title, fetchUrl }) {
       {loading ? (
         <Loading />
       ) : (
-        <div className="row-posters">
+        <div className="row_posters">
           {animes.map((item) => {
             return (
               <img
-                className="row_poster"
-                src={item.image_url}
+                key={item.mal_id}
+                className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+                src={isLargeRow ? item.image_url : item.image_url}
                 alt={item.title}
               />
             );
