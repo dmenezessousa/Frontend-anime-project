@@ -8,27 +8,26 @@ import "./App.css";
 import Signin from "./components/Signin/Signin";
 import SignUp from "./components/Signup/Signup";
 import Banner from "./components/Banner/Banner";
-
+import Nav from "./components/Nav/Nav";
 function App() {
   return (
     <div className="app">
-      {/* nav */}
-      <Banner />
-      <Row
-        title="Original Video Animation"
-        fetchUrl={requests.fetchOVA}
-        isLargeRow
-      />
-      <Row title="TV Shows" fetchUrl={requests.fetchTv} />
-      <Row title="Movies" fetchUrl={requests.fetchMovies} />
-      <Row title="Special Episodes" fetchUrl={requests.fetchSpecial} />
-
-      {/* <Router>
+      <Router>
+        <Nav />
+        <Banner />
+        <Row
+          title="Original Video Animation"
+          fetchUrl={requests.fetchOVA}
+          isLargeRow
+        />
+        <Row title="TV Shows" fetchUrl={requests.fetchTv} />
+        <Row title="Movies" fetchUrl={requests.fetchMovies} />
+        <Row title="Special Episodes" fetchUrl={requests.fetchSpecial} />
         <Routes>
-          <Route path="/sign-in" element={<Signin/>}/>
-          <Route path="/sign-up" element={<SignUp/>}/>
+          <Route path="/sign-in" element={<Signin />} />
+          <Route path="/sign-up" element={<SignUp />} />
         </Routes>
-      </Router> */}
+      </Router>
     </div>
   );
 }
