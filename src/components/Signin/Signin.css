@@ -1,15 +1,8 @@
-body {
-  margin: 0px;
-  height: 100%;
-}
 .form-div-signin {
-  width: 100vh;
+  width: 100%;
   max-width: 330px;
   padding: 15px;
   margin: auto;
-  height: 100vh;
-  margin-top: 20vh;
-  margin-left: 45%;
 }
 label {
   color: black;
@@ -32,9 +25,4 @@ label {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
-.form-control {
-  height: 50px;
-  width: 300px;
-  border-radius: 5px;
 }

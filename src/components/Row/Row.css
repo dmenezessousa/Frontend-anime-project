@@ -5,7 +5,7 @@
 .row_posters {
   display: flex;
   overflow-y: hidden;
-  overflow: auto;
+  overflow-x: auto;
   padding: 20px;
 }
 

@@ -4,6 +4,7 @@
 
 body {
   background-color: #111;
+  background-image: url("/src/components/Signup/anime-BG.jpg");
 }
 
 .app {
