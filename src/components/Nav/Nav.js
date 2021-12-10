@@ -14,9 +14,9 @@ function Nav() {
         handleShow(true);
       } else handleShow(false);
     });
-    return () => {
-      window.removeEventListener("scroll");
-    };
+    // return () => {
+    //   window.removeEventListener("scroll");
+    // };
   }, []);
 
   //   const {
@@ -43,33 +43,13 @@ function Nav() {
     <div className={`nav ${show && "nav_black"}`}>
       <img className="nav_logo" src={logo} alt="animelogo" />
       <img className="nav_avatar" src={avatar} alt="avatar" />
+      <ul className="nav_ul">
+        <li className="nav_li">Anime</li>
+        <li className="nav_li">Manga</li>
+        <li className="nav_li">Sing In</li>
+        <li className="nav_li">Sing Up</li>
+      </ul>
     </div>
-    // <nav >
-    // <div >
-    // <Link to="/"  href="#">
-    //     Anime
-    // </Link>
-    // <div style={{display: "flex", justifyContent: "space-between"}} >
-    //     <ul >
-    //     <li >
-    //         <Link to={link1} >
-    //         {linkTittle1}
-    //         </Link>
-    //     </li>
-    //     <li >
-    //         <Link to={link2}  onClick={()=> logoutBotton()} >
-    //         {linkTittle2}
-    //         </Link>
-    //     </li>
-    //     <li >
-    //         <Link to={"/"} >
-    //         Favorites
-    //         </Link>
-    //     </li>
-    //     </ul>
-    // </div>
-    // </div>
-    // </nav>
   );
 }
 

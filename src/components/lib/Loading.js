@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Loading() {
-    return (
-        <div>
-            ....Loading
-        </div>
-    )
+  return <div style={{ fontSize: "50px" }}>....Loading</div>;
 }
 
-export default Loading
+export default Loading;

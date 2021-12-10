@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axiosAPI from "../lib/axiosApi";
 import Loading from "../lib/Loading";
 import "./Row.css";
+import { useHorizontalScroll } from "../lib/useSideScroll";
 
 function Row({ title, fetchUrl, isLargeRow }) {
   const [animes, setAnimes] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const scrollRef = useHorizontalScroll();
   useEffect(() => {
     setTimeout(() => setLoading(false), 5000);
   }, []);
@@ -26,7 +27,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
       {loading ? (
         <Loading />
       ) : (
-        <div className="row_posters">
+        <div className="row_posters" ref={scrollRef}>
           {animes.map((item) => {
             return (
               <img

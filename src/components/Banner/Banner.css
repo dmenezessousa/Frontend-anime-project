@@ -14,7 +14,7 @@
   font-size: 3rem;
   font-weight: 800;
   padding-bottom: 0.3rem;
-  color: #000;
+  color: #fff;
 }
 
 .banner_buttons {
@@ -47,7 +47,7 @@
   font-size: 1.3rem;
   max-width: 360px;
   height: 80px;
-  color: #000;
+  color: #fff;
 }
 
 .banner_fadeBottom {
