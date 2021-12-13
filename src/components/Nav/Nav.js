@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import logo from "./animelogo.png";
+import offavatar from "./offlogo.png";
 import avatar from "./Netflix-avatar.png";
 import "./Nav.css";
 import { useState } from "react/cjs/react.development";
@@ -25,7 +26,7 @@ function Nav() {
   } = useContext(AuthContext);
 
   let Sign_in = user?.isAuth ? (
-    <img className="nav_avatar" src={avatar} alt="avatar" />
+    <img className="nav_avatar_in" src={avatar} alt="avatar" />
   ) : (
     "Sign in"
   );
@@ -50,7 +51,7 @@ function Nav() {
         src={logo}
         alt={<Link to={"/"}>animelogo</Link>}
       />
-      <img className="nav_avatar" src={avatar} alt="avatar" />
+      <img className="nav_avatar" src={offavatar} alt="avatar" />
       <ul className="nav_ul">
         <li className="nav_li">
           <Link className="nav-link" to="/anime">

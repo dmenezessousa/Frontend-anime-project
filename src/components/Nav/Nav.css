@@ -25,6 +25,14 @@
   object-fit: contain;
 }
 
+.nav_avatar_in {
+  position: fixed;
+  right: 30px;
+  width: 35px;
+  object-fit: contain;
+  margin-top: -5px;
+}
+
 .nav_black {
   background-color: #111;
 }

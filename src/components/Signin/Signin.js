@@ -49,6 +49,7 @@ function Signin() {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        position: "top-center",
       });
       navigate("/");
     } catch (e) {
