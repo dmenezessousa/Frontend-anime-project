@@ -88,7 +88,7 @@ function SignUp() {
   return (
     <>
       <div className="form-div-signin">
-        <form style={{ marginTop: 150, color: "red" }} onSubmit={handleSubmit}>
+        <form style={{ marginTop: 150, color: "#fff" }} onSubmit={handleSubmit}>
           <h1 className="h3 mb-3 fw-normal">Please Sign Up</h1>
           {/* First Name */}
           <div className="form-floating">

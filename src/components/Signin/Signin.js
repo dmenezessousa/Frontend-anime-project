@@ -10,13 +10,13 @@ import "react-toastify/dist/ReactToastify.css";
 import emailValidator from "../lib/EmailValidator";
 import passwordValidator from "../lib/PasswordValidator";
 import checkJwtToken from "../lib/CheckJwtToken";
-import { userContext } from "../Context/userContext";
+import { AuthContext } from "../Context/AuthContext";
 import axiosBackend from "../lib/axiosBackend";
 
 function Signin() {
   const [email, handleEmailOnChange, emailError] = emailValidator();
   const [password, handlePwOnChange] = passwordValidator();
-  const { dispatch } = useContext(userContext);
+  const { dispatch } = useContext(AuthContext);
   const { CheckToken } = checkJwtToken();
   const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ function Signin() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      let payload = await axiosBackend.get("/users/login", {
+      let payload = await axiosBackend.post("/api/users/login", {
         email,
         password,
       });
@@ -43,7 +43,6 @@ function Signin() {
       });
 
       toast.success("Success", {
-        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -51,7 +50,7 @@ function Signin() {
         draggable: true,
         progress: undefined,
       });
-      navigate("/protected-home");
+      navigate("/");
     } catch (e) {
       toast.error(e.response.data.error, {
         position: "top-center",
@@ -67,8 +66,8 @@ function Signin() {
   return (
     <div className="form-div-signin">
       <main className="form-signin">
-        <form onSubmit={handleSubmit}>
-          <h1 className="h3 mb-3 fw-normal" style={{ color: "red" }}>
+        <form style={{ marginTop: 150, color: "#FFF" }} onSubmit={handleSubmit}>
+          <h1 className="h3 mb-3 fw-normal" style={{ color: "#fff" }}>
             Please Sign In
           </h1>
           {/* Email address */}

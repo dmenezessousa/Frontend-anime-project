@@ -8,9 +8,6 @@ import Scroll from "./Scroll";
 function Row({ title, fetchUrl, isLargeRow }) {
   const [animes, setAnimes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const scrollRef = useHorizontalScroll();
-  console.log(scrollRef);
-
   useEffect(() => {
     setTimeout(() => setLoading(false), 500);
   }, []);

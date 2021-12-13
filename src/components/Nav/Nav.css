@@ -20,8 +20,8 @@
 
 .nav_avatar {
   position: fixed;
-  right: 20px;
-  width: 30px;
+  right: 30px;
+  width: 35px;
   object-fit: contain;
 }
 
@@ -40,4 +40,13 @@
 .nav_li {
   margin-right: 20px;
   margin-top: 5px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+}
+.nav-link:active {
+  color: #fff;
+  text-decoration: none;
 }
