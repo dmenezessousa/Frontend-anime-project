@@ -53,6 +53,20 @@ function Nav() {
       />
       <img className="nav_avatar" src={offavatar} alt="avatar" />
       <ul className="nav_ul">
+        <div class="search-container">
+          <form action="/search" method="get">
+            <input
+              class="search expandright"
+              id="searchright"
+              type="search"
+              name="q"
+              placeholder="Search"
+            />
+            <label class="button searchbutton" for="searchright">
+              <span class="mglass">&#9906;</span>
+            </label>
+          </form>
+        </div>
         <li className="nav_li">
           <Link className="nav-link" to="/anime">
             Anime
