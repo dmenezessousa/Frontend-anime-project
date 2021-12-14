@@ -3,6 +3,7 @@ import { useHorizontalScroll } from "../lib/useSideScroll";
 
 function Scroll({ animes, isLargeRow }) {
   const scrollRef = useHorizontalScroll();
+
   return (
     <div>
       <div className="row_posters" ref={scrollRef}>

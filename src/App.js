@@ -10,6 +10,7 @@ import Signin from "./components/Signin/Signin";
 import SignUp from "./components/Signup/Signup";
 import Nav from "./components/Nav/Nav";
 import Anime from "./components/Anime/Anime";
+import AnimeDetails from "./components/Anime/AnimeDetails";
 import Manga from "./components/Manga/Manga";
 import Profile from "./components/Profile/Profile";
 import { AuthContext } from "./components/Context/AuthContext";
@@ -44,7 +45,6 @@ function App() {
       <Router>
         <Nav />
         <Routes>
-          {/* <Route path = "/protected/favorites" element={<PrivateRoute><Favorites/></PrivateRoute>}/>              */}
           <Route
             path="/profile"
             element={
@@ -53,7 +53,7 @@ function App() {
               </PrivateRoute>
             }
           />
-          {/* <Route path="/anime-detail/:name" element={<AnimeDetail/>}/> */}
+          <Route path="/anime-detail/:name" element={<AnimeDetails />} />
           <Route path="/sign-in" element={<Signin />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route

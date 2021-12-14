@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 
 import checkJwtToken from "../lib/CheckJwtToken";
+import { AuthContext } from "../Context/AuthContext";
 import FirstNameValidator from "../lib/FirstNameValidator";
 import LastNameValidator from "../lib/LastNameValidator";
 import UserNameValidator from "../lib/UserNameValidator";
@@ -13,6 +14,9 @@ import AxiosBackend from "../lib/axiosBackend";
 import "./Profile.css";
 
 function UpdateProfile() {
+  const {
+    state: { user },
+  } = useContext(AuthContext);
   const [
     firstName,
     handleFirstNameOnChange,
@@ -42,7 +46,7 @@ function UpdateProfile() {
   const { CheckToken } = checkJwtToken();
   useEffect(() => {
     if (CheckToken()) {
-      navigate("/profile");
+      navigate("/Profile");
     }
   }, []);
 
@@ -66,6 +70,8 @@ function UpdateProfile() {
         progress: undefined,
       });
       console.log(payload);
+      window.localStorage.removeItem("jwtToken");
+      navigate("/sign-in");
     } catch (e) {
       toast.error(e.response.data.error, {
         position: "top-center",
@@ -82,13 +88,18 @@ function UpdateProfile() {
   return (
     <>
       <div className="form-div-signin">
-        <div style={{ margin: 40, width: 300 }}>
+        <div style={{ marginTop: 50, color: "#fff", marginLeft: 14 }}>
+          <h1>Welcome {user.userName}</h1>
+        </div>
+        <div style={{ margin: 40, width: 300, marginLeft: 50 }}>
           <Link to={"/mylist"} className="nav-link">
             <h1 style={{ color: "white" }}> My Favorites</h1>
           </Link>
         </div>
-        <form style={{ marginTop: 100, color: "#fff" }} onSubmit={handleSubmit}>
-          <h1 className="h3 mb-3 fw-normal">Update Profile</h1>
+        <form style={{ marginTop: 50, color: "#fff" }} onSubmit={handleSubmit}>
+          <h1 style={{ marginLeft: 40 }} className="h3 mb-3 fw-normal">
+            Update Profile
+          </h1>
           {/* First Name */}
           <div className="form-floating">
             <input
@@ -167,7 +178,7 @@ function UpdateProfile() {
             }}
             type="submit"
           >
-            Sign Up
+            Update
           </button>
         </form>
       </div>

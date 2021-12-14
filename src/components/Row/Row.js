@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import axiosAPI from "../lib/axiosApi";
 import Loading from "../lib/Loading";
 import "./Row.css";
-import { useHorizontalScroll } from "../lib/useSideScroll";
 import Scroll from "./Scroll";
 
 function Row({ title, fetchUrl, isLargeRow }) {
   const [animes, setAnimes] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     setTimeout(() => setLoading(false), 500);
   }, []);
@@ -20,6 +20,8 @@ function Row({ title, fetchUrl, isLargeRow }) {
     }
     fetchData();
   }, [fetchUrl]);
+
+  console.log(fetchUrl);
 
   return (
     <div className="row">

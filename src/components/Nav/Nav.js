@@ -6,9 +6,11 @@ import offavatar from "./offlogo.png";
 import avatar from "./Netflix-avatar.png";
 import "./Nav.css";
 import { useState } from "react/cjs/react.development";
+import AnimeHooks from "../lib/animeHooks";
 
 function Nav() {
   const [show, handleShow] = useState(false);
+  let [, setAnimeInput, , setSubmit] = AnimeHooks();
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
@@ -25,24 +27,46 @@ function Nav() {
     dispatch,
   } = useContext(AuthContext);
 
-  let Sign_in = user?.isAuth ? (
-    <img className="nav_avatar_in" src={avatar} alt="avatar" />
-  ) : (
-    "Sign in"
-  );
-  let Profile = user?.isAuth ? "/profile" : "/sign-in";
-
-  let userLogout = user?.isAuth ? "logout" : "Sign up";
-  let Sign_up = user?.isAuth ? "/" : "/sign-up";
-
-  let logoutBotton = user?.isAuth ? logout : () => {};
-
   function logout() {
     dispatch({
       type: "LOGOUT",
     });
     window.localStorage.removeItem("jwtToken");
   }
+
+  function handleAnimeSubmit() {
+    setSubmit(true);
+  }
+
+  let Sign_in = user?.isAuth ? (
+    <img className="nav_avatar_in" src={avatar} alt="avatar" />
+  ) : (
+    "Sign in"
+  );
+  let Profile = user?.isAuth ? "/profile" : "/sign-in";
+  let userLogout = user?.isAuth ? "logout" : "Sign up";
+  let Sign_up = user?.isAuth ? "/" : "/sign-up";
+  let Search = user?.isAuth ? (
+    <div class="search-container">
+      <form onSubmit={handleAnimeSubmit} action="/search" method="get">
+        <input
+          onChange={(e) => setAnimeInput(e.target.value)}
+          class="search expandright"
+          id="searchright"
+          type="search"
+          name="q"
+          placeholder="Search"
+        />
+        <label class="button searchbutton" for="searchright">
+          <span class="mglass">&#9906;</span>
+        </label>
+      </form>
+    </div>
+  ) : (
+    <div></div>
+  );
+
+  let logoutBotton = user?.isAuth ? logout : () => {};
 
   return (
     <div className={`nav ${show && "nav_black"}`}>
@@ -53,20 +77,7 @@ function Nav() {
       />
       <img className="nav_avatar" src={offavatar} alt="avatar" />
       <ul className="nav_ul">
-        <div class="search-container">
-          <form action="/search" method="get">
-            <input
-              class="search expandright"
-              id="searchright"
-              type="search"
-              name="q"
-              placeholder="Search"
-            />
-            <label class="button searchbutton" for="searchright">
-              <span class="mglass">&#9906;</span>
-            </label>
-          </form>
-        </div>
+        {Search}
         <li className="nav_li">
           <Link className="nav-link" to="/anime">
             Anime

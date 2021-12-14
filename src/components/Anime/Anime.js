@@ -1,7 +1,8 @@
 import React from "react";
-import requests from "../lib/requests";
 import Row from "../Row/Row";
 import Banner from "../Banner/Banner";
+import requests from "../lib/requests";
+
 function Anime() {
   return (
     <div>
