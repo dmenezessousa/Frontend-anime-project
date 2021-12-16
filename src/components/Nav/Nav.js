@@ -42,6 +42,8 @@ function Nav() {
     "Sign in"
   );
   let Profile = user?.isAuth ? "/profile" : "/sign-in";
+  let Anime = user?.isAuth ? "anime" : "";
+  let Manga = user?.isAuth ? "manga" : "";
   let userLogout = user?.isAuth ? "logout" : "Sign up";
   let Sign_up = user?.isAuth ? "/" : "/sign-up";
   let Search = user?.isAuth ? (
@@ -78,12 +80,12 @@ function Nav() {
         {Search}
         <li className="nav_li">
           <Link className="nav-link" to="/anime">
-            Anime
+            {Anime}
           </Link>
         </li>
         <li className="nav_li">
           <Link className="nav-link" to="/manga">
-            Manga
+            {Manga}
           </Link>
         </li>
         <li className="nav_li">

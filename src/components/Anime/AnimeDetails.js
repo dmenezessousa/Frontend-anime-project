@@ -3,19 +3,43 @@ import { useParams } from "react-router-dom";
 import Loading from "../lib/Loading";
 import axios from "../lib/axiosApi";
 import Banner from "../Banner/Banner";
-
+import AxiosBackend from "../lib/axiosBackend";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function AnimeDetails() {
   const [animeList, setAnimeList] = useState(null);
-  const { name } = useParams();
+  const { id } = useParams();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getAnimeInfo();
   }, []);
 
+  async function handleAddToMyList(animeDetail) {
+    try {
+      await AxiosBackend.post("/api/users/anime/add-anime", {
+        title: animeDetail.title,
+        animePoster: animeDetail.image_url,
+        animeID: animeDetail.mal_id,
+        animeOwner: "",
+      });
+      toast.success("Added To List", {
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        position: "top-center",
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   async function getAnimeInfo() {
     try {
-      let payload = await axios.get(`/anime/${name}`);
+      let payload = await axios.get(`/anime/${id}`);
       setAnimeList(payload.data);
       setLoading(false);
     } catch (e) {
@@ -80,6 +104,7 @@ function AnimeDetails() {
               </tbody>
             </table>
             <button
+              onClick={() => handleAddToMyList(animeList)}
               className="w-100 btn btn-lg btn-primary"
               style={{
                 backgroundColor: "red",

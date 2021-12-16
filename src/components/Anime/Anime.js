@@ -1,21 +1,18 @@
-import React, { useState, useContext } from "react";
-import Row from "../Row/Row";
+import React, { useContext } from "react";
+import Row from "../Row/AnimeRow";
 import Banner from "../Banner/Banner";
 import { AnimeInputContext } from "../../animeContext";
-import Nav from "../Nav/Nav";
 
 function Anime() {
   const { animeInput, setAnimeInput, handleInput } =
     useContext(AnimeInputContext);
-  console.log(animeInput);
 
   const requests = {
-    fetchTv: `/search/anime?type=tv&limit=12&q=${animeInput}`,
-    fetchMovies: `/search/anime?type=Movie&limit=12&q=${animeInput}`,
-    fetchSpecial: `/search/anime?type=Special&limit=12&q=${animeInput}`,
-    fetchOVA: `/search/anime?type=OVA&limit=12&q=${animeInput}`,
+    fetchTv: `/search/anime?type=tv&limit=15&q=${animeInput}`,
+    fetchMovies: `/search/anime?type=Movie&limit=15&q=${animeInput}`,
+    fetchSpecial: `/search/anime?type=Special&limit=15&q=${animeInput}`,
+    fetchOVA: `/search/anime?type=OVA&limit=15&q=${animeInput}`,
   };
-  console.log(requests.fetchTv);
   return (
     <div>
       <Banner />

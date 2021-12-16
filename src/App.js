@@ -3,16 +3,19 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import jwtDecode from "jwt-decode";
+
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { AnimeInputContext } from "./animeContext";
-
 import "./App.css";
 import Signin from "./components/Signin/Signin";
 import SignUp from "./components/Signup/Signup";
 import Nav from "./components/Nav/Nav";
 import Anime from "./components/Anime/Anime";
 import AnimeDetails from "./components/Anime/AnimeDetails";
+import MangaDetails from "./components/Manga/MangaDetails";
 import Manga from "./components/Manga/Manga";
+import MyAnimeList from "./components/MyList/MyAnimelist";
+import MyMangaList from "./components/MyList/MyMangaList";
 import Profile from "./components/Profile/Profile";
 import { AuthContext } from "./components/Context/AuthContext";
 function App() {
@@ -27,7 +30,6 @@ function App() {
   function handleInput(e) {
     e.preventDefault();
     setAnimeInput(animeInput);
-    <Anime />;
   }
   const { dispatch } = useContext(AuthContext);
 
@@ -69,9 +71,26 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path="/anime-detail/:name" element={<AnimeDetails />} />
+            <Route path="/anime-detail/:id" element={<AnimeDetails />} />
+            <Route path="/manga-detail/:id" element={<MangaDetails />} />
             <Route path="/sign-in" element={<Signin />} />
             <Route path="/sign-up" element={<SignUp />} />
+            <Route
+              path="/myanimelist"
+              element={
+                <PrivateRoute>
+                  <MyAnimeList />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/mymangalist"
+              element={
+                <PrivateRoute>
+                  <MyMangaList />
+                </PrivateRoute>
+              }
+            />
             <Route
               path="/manga"
               element={

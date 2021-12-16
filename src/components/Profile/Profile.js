@@ -88,15 +88,40 @@ function UpdateProfile() {
   return (
     <>
       <div className="form-div-signin">
-        <div style={{ marginTop: 50, color: "#fff", marginLeft: 14 }}>
-          <h1>Welcome {user.userName}</h1>
+        <div
+          style={{
+            marginTop: 50,
+            color: "#fff",
+            marginLeft: 14,
+            display: "flex",
+          }}
+        >
+          <h1>Welcome </h1>
+          <h1 style={{ color: "red", marginLeft: 5 }}> {user.userName}</h1>
         </div>
-        <div style={{ margin: 40, width: 300, marginLeft: 50 }}>
-          <Link to={"/mylist"} className="nav-link">
-            <h1 style={{ color: "white" }}> My Favorites</h1>
+        <div>
+          <Link
+            style={{ margin: 40, width: 300, marginLeft: 40, display: "flex" }}
+            to={"/myanimelist"}
+            className="nav-link"
+          >
+            <h1 style={{ color: "white" }}> My </h1>
+            <h1 style={{ color: "red" }}>Anime</h1>
+            <h1 style={{ color: "white" }}>List</h1>
           </Link>
         </div>
-        <form style={{ marginTop: 50, color: "#fff" }} onSubmit={handleSubmit}>
+        <div>
+          <Link
+            style={{ margin: 40, width: 300, marginLeft: 40, display: "flex" }}
+            to={"/mymangalist"}
+            className="nav-link"
+          >
+            <h1 style={{ color: "white" }}> My </h1>
+            <h1 style={{ color: "red" }}>Manga</h1>
+            <h1 style={{ color: "white" }}>List</h1>
+          </Link>
+        </div>
+        <form style={{ marginTop: 50, color: "red" }} onSubmit={handleSubmit}>
           <h1 style={{ marginLeft: 40 }} className="h3 mb-3 fw-normal">
             Update Profile
           </h1>
