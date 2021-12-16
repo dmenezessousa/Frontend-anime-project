@@ -6,11 +6,7 @@ function Anime() {
   return (
     <div>
       <MangaBanner />
-      <Row
-        title="Original Video Animation"
-        fetchUrl={mangaRequests.fetchOVA}
-        isLargeRow
-      />
+      <Row title="Original Video Animation" fetchUrl={mangaRequests.fetchOVA} />
       <Row title="TV Shows" fetchUrl={mangaRequests.fetchTv} />
       <Row title="Movies" fetchUrl={mangaRequests.fetchMovies} />
       <Row title="Special Episodes" fetchUrl={mangaRequests.fetchSpecial} />

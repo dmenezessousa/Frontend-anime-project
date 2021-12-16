@@ -8,8 +8,7 @@ function AnimeDetails() {
   const [mangaList, setMangaList] = useState([]);
   const { name } = useParams();
   const [loading, setLoading] = useState(true);
-  console.log(name);
-  console.log(mangaList);
+
   useEffect(() => {
     setTimeout(() => setLoading(false), 500);
   }, []);

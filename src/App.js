@@ -1,9 +1,10 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import jwtDecode from "jwt-decode";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import { AnimeInputContext } from "./animeContext";
 
 import "./App.css";
 import Signin from "./components/Signin/Signin";
@@ -15,7 +16,21 @@ import Manga from "./components/Manga/Manga";
 import Profile from "./components/Profile/Profile";
 import { AuthContext } from "./components/Context/AuthContext";
 function App() {
+  const [animeInput, setAnimeInput] = useState("");
+
+  const animeInputValue = {
+    animeInput,
+    setAnimeInput,
+    handleInput,
+  };
+
+  function handleInput(e) {
+    e.preventDefault();
+    setAnimeInput(animeInput);
+    <Anime />;
+  }
   const { dispatch } = useContext(AuthContext);
+
   useEffect(() => {
     let jwtToken = window.localStorage.getItem("jwtToken");
 
@@ -43,44 +58,46 @@ function App() {
     <div className="app">
       <ToastContainer />
       <Router>
-        <Nav />
-        <Routes>
-          <Route
-            path="/profile"
-            element={
-              <PrivateRoute>
-                <Profile />
-              </PrivateRoute>
-            }
-          />
-          <Route path="/anime-detail/:name" element={<AnimeDetails />} />
-          <Route path="/sign-in" element={<Signin />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route
-            path="/manga"
-            element={
-              <PrivateRoute>
-                <Manga />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/anime"
-            element={
-              <PrivateRoute>
-                <Anime />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <PrivateRoute>
-                <Manga />
-              </PrivateRoute>
-            }
-          />
-        </Routes>
+        <AnimeInputContext.Provider value={animeInputValue}>
+          <Nav />
+          <Routes>
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/anime-detail/:name" element={<AnimeDetails />} />
+            <Route path="/sign-in" element={<Signin />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route
+              path="/manga"
+              element={
+                <PrivateRoute>
+                  <Manga />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/anime"
+              element={
+                <PrivateRoute>
+                  <Anime />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/"
+              element={
+                <PrivateRoute>
+                  <Manga />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </AnimeInputContext.Provider>
       </Router>
     </div>
   );

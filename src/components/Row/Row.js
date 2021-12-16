@@ -9,19 +9,14 @@ function Row({ title, fetchUrl, isLargeRow }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 500);
-  }, []);
-
-  useEffect(() => {
     async function fetchData() {
       const request = await axiosAPI.get(fetchUrl);
       setAnimes(request.data.results);
+      setLoading(false);
       return request;
     }
     fetchData();
   }, [fetchUrl]);
-
-  console.log(fetchUrl);
 
   return (
     <div className="row">

@@ -5,13 +5,9 @@ import axios from "../lib/axiosApi";
 import Banner from "../Banner/Banner";
 
 function AnimeDetails() {
-  const [animeList, setAnimeList] = useState([]);
+  const [animeList, setAnimeList] = useState(null);
   const { name } = useParams();
   const [loading, setLoading] = useState(true);
-  console.log(name);
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 500);
-  }, []);
 
   useEffect(() => {
     getAnimeInfo();
@@ -19,8 +15,9 @@ function AnimeDetails() {
 
   async function getAnimeInfo() {
     try {
-      let payload = await axios.get(`/search/anime?q=${name}`);
-      setAnimeList(payload.data.results);
+      let payload = await axios.get(`/anime/${name}`);
+      setAnimeList(payload.data);
+      setLoading(false);
     } catch (e) {
       console.log(e);
     }
@@ -34,12 +31,12 @@ function AnimeDetails() {
         <div>
           <div style={{ marginTop: 30, color: "#fff" }}>
             <img
-              style={{ marginLeft: "50%", height: 400 }}
+              style={{ marginLeft: "45%", height: 400 }}
               src={animeList.image_url}
               alt={animeList.title}
             />
           </div>
-          <div style={{ marginLeft: "47%", height: "fit-content" }}>
+          <div style={{ marginLeft: "43%", height: "fit-content" }}>
             <table style={{ marginTop: 30, color: "#fff" }}>
               <tbody>
                 <tr>
@@ -69,11 +66,33 @@ function AnimeDetails() {
                 <tr>
                   <td>Learn More: </td>
                   <td>
-                    <a href={animeList.url}> Click here</a>
+                    <a
+                      style={{ textDecoration: "none", color: "red" }}
+                      href={animeList.url}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      {" "}
+                      Click here
+                    </a>
                   </td>
                 </tr>
               </tbody>
             </table>
+            <button
+              className="w-100 btn btn-lg btn-primary"
+              style={{
+                backgroundColor: "red",
+                color: "#fff",
+                borderRadius: 5,
+                height: 50,
+                marginTop: 5,
+                cursor: "pointer",
+                width: 370,
+              }}
+            >
+              Add to My List
+            </button>
           </div>
         </div>
       )}

@@ -6,11 +6,13 @@ import offavatar from "./offlogo.png";
 import avatar from "./Netflix-avatar.png";
 import "./Nav.css";
 import { useState } from "react/cjs/react.development";
-import AnimeHooks from "../lib/animeHooks";
+import { AnimeInputContext } from "../../animeContext";
 
 function Nav() {
   const [show, handleShow] = useState(false);
-  let [, setAnimeInput, , setSubmit] = AnimeHooks();
+  const { animeInput, setAnimeInput, handleInput } =
+    useContext(AnimeInputContext);
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
@@ -34,10 +36,6 @@ function Nav() {
     window.localStorage.removeItem("jwtToken");
   }
 
-  function handleAnimeSubmit() {
-    setSubmit(true);
-  }
-
   let Sign_in = user?.isAuth ? (
     <img className="nav_avatar_in" src={avatar} alt="avatar" />
   ) : (
@@ -48,8 +46,9 @@ function Nav() {
   let Sign_up = user?.isAuth ? "/" : "/sign-up";
   let Search = user?.isAuth ? (
     <div class="search-container">
-      <form onSubmit={handleAnimeSubmit} action="/search" method="get">
+      <form onSubmit={handleInput}>
         <input
+          value={animeInput}
           onChange={(e) => setAnimeInput(e.target.value)}
           class="search expandright"
           id="searchright"
@@ -70,11 +69,10 @@ function Nav() {
 
   return (
     <div className={`nav ${show && "nav_black"}`}>
-      <img
-        className="nav_logo"
-        src={logo}
-        alt={<Link to={"/"}>animelogo</Link>}
-      />
+      <Link to={"/"}>
+        <img className="nav_logo" src={logo} alt="AnimeLogo" />
+      </Link>
+
       <img className="nav_avatar" src={offavatar} alt="avatar" />
       <ul className="nav_ul">
         {Search}
