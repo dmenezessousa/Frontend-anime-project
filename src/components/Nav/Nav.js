@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
+import { AnimeInputContext } from "../../animeContext";
 import logo from "./animelogo.png";
 import offavatar from "./offlogo.png";
-import avatar from "./Netflix-avatar.png";
+import avatar from "./avatar.png";
 import "./Nav.css";
-import { useState } from "react/cjs/react.development";
-import { AnimeInputContext } from "../../animeContext";
 
 function Nav() {
   const [show, handleShow] = useState(false);

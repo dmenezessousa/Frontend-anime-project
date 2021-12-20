@@ -156,3 +156,18 @@
 .expandright:focus {
   padding: 0 0 0 16px;
 }
+
+@media only screen and (max-width: 414px) {
+  .nav_ul {
+    display: flex;
+    color: #fff;
+    list-style: none;
+    justify-content: flex-end;
+    margin-right: 15%;
+  }
+
+  .nav_li {
+    margin-right: 20px;
+    margin-top: 5px;
+  }
+}

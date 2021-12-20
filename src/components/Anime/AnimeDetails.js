@@ -6,6 +6,7 @@ import Banner from "../Banner/Banner";
 import AxiosBackend from "../lib/axiosBackend";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./anime.css";
 function AnimeDetails() {
   const [animeList, setAnimeList] = useState(null);
   const { id } = useParams();
@@ -52,16 +53,16 @@ function AnimeDetails() {
       {loading ? (
         <Loading />
       ) : (
-        <div>
-          <div style={{ marginTop: 30, color: "#fff" }}>
+        <div className="main_div">
+          <div className="title_div">
             <img
-              style={{ marginLeft: "45%", height: 400 }}
+              className="img_content"
               src={animeList.image_url}
               alt={animeList.title}
             />
           </div>
-          <div style={{ marginLeft: "43%", height: "fit-content" }}>
-            <table style={{ marginTop: 30, color: "#fff" }}>
+          <div className="table_div">
+            <table className="table_content">
               <tbody>
                 <tr>
                   <td>Title: </td>
@@ -105,7 +106,7 @@ function AnimeDetails() {
             </table>
             <button
               onClick={() => handleAddToMyList(animeList)}
-              className="w-100 btn btn-lg btn-primary"
+              className="w-100 btn btn-lg btn-primary anime"
               style={{
                 backgroundColor: "red",
                 color: "#fff",

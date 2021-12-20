@@ -59,7 +59,7 @@ function MyMangaList() {
         {loading ? (
           <Loading />
         ) : (
-          <div style={{ marginLeft: "45%" }}>
+          <div className="main_div">
             <div style={{ display: "flex" }}>
               <h1 style={{ color: "white" }}>My</h1>
               <h1 style={{ color: "red", marginLeft: 5 }}>Manga</h1>
@@ -84,7 +84,7 @@ function MyMangaList() {
                       />
                       <span>Title: {item.title}</span>
                       <br />
-                      <span>Owner: {item._id}</span>
+                      <span>Owner: {item.mangaOwner.userName}</span>
                     </Link>
                     <button
                       className="w-100 btn btn-lg btn-primary"

@@ -59,3 +59,24 @@
     #111
   );
 }
+
+@media only screen and (max-width: 414px) {
+  .banner {
+    color: #fff;
+    object-fit: contain;
+    height: 300px;
+  }
+
+  .banner_contents {
+    margin-left: 30px;
+    padding-top: 80px;
+    height: 105px;
+  }
+
+  .banner_title {
+    font-size: 1rem;
+    font-weight: 800;
+    padding-bottom: 0.3rem;
+    color: #fff;
+  }
+}

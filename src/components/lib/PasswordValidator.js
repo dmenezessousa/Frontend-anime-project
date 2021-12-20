@@ -1,51 +1,53 @@
 import { useState, useEffect } from "react";
-import {isEmpty, isStrongPassword,} from "validator";
+import { isEmpty, isStrongPassword } from "validator";
 
 function PasswordValidator() {
-    const [password, setPassword] = useState("");
-    const [passwordError, setPasswordError] = useState("");
-    const [pwOnFocus, setPwOnFocus] = useState(false);
-    const [pwOnBlur, setPwOnBlur] = useState(false);
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [pwOnFocus, setPwOnFocus] = useState(false);
+  const [pwOnBlur, setPwOnBlur] = useState(false);
 
-    useEffect(() => {
-
-        if(pwOnFocus){
-            if(password.length > 0){
-                if(!isStrongPassword(password,
-                    {minLength:8,
-                    minLowercase:1,
-                    minUppercase:1,
-                    minNumbers:1,
-                    minSymbol:1
-                })){
-                    setPasswordError("Password is not Strong")
-                }
-
-                if(isStrongPassword(password,
-                    {minLength:8,
-                    minLowercase:1,
-                    minUppercase:1,
-                    minNumbers:1,
-                    minSymbol:1
-                })){
-                    setPasswordError("Password Is Strong")
-                }
-            }
+  useEffect(() => {
+    if (pwOnFocus) {
+      if (password.length > 0) {
+        if (
+          !isStrongPassword(password, {
+            minLength: 8,
+            minLowercase: 1,
+            minUppercase: 1,
+            minNumbers: 1,
+            minSymbol: 1,
+          })
+        ) {
+          setPasswordError("Password is not Strong");
         }
 
-        if(pwOnBlur){
-            if(isEmpty(password)){
-                setPasswordError("Password cannot be empty")
-            };
-        };
+        if (
+          isStrongPassword(password, {
+            minLength: 8,
+            minLowercase: 1,
+            minUppercase: 1,
+            minNumbers: 1,
+            minSymbol: 1,
+          })
+        ) {
+          setPasswordError("Password Is Correct");
+        }
+      }
+    }
 
-    },[password,pwOnFocus,pwOnBlur]);
+    if (pwOnBlur) {
+      if (isEmpty(password)) {
+        setPasswordError("Password cannot be empty");
+      }
+    }
+  }, [password, pwOnFocus, pwOnBlur]);
 
-    function handlePwOnChange(e){
-        setPassword(e.target.value);
-    };
+  function handlePwOnChange(e) {
+    setPassword(e.target.value);
+  }
 
-    return [password,handlePwOnChange,passwordError,setPwOnFocus,setPwOnBlur]
-};
+  return [password, handlePwOnChange, passwordError, setPwOnFocus, setPwOnBlur];
+}
 
 export default PasswordValidator;

@@ -20,6 +20,7 @@ function MyAnimeList() {
     try {
       let payload = await AxiosBackend.get("/api/users/anime/get-all-anime");
       setAnimeArray(payload.data.payload);
+      console.log(payload);
       setLoading(false);
     } catch (e) {
       console.log(e.response);
@@ -51,7 +52,6 @@ function MyAnimeList() {
       console.log(e.response);
     }
   }
-  console.log(setAnimeArray);
   return (
     <div>
       <Banner />
@@ -59,7 +59,7 @@ function MyAnimeList() {
         {loading ? (
           <Loading />
         ) : (
-          <div style={{ marginLeft: "45%" }}>
+          <div className="main_div">
             <div style={{ display: "flex" }}>
               <h1 style={{ color: "white" }}>My</h1>
               <h1 style={{ color: "red", marginLeft: 5 }}>Anime</h1>
@@ -67,7 +67,7 @@ function MyAnimeList() {
             </div>
             {animeArray.map((item) => {
               return (
-                <div key={item._id} style={{ width: 300, height: 600 }}>
+                <div key={item._id} className="Content_div">
                   <Link
                     style={{
                       textDecoration: "none",
@@ -83,7 +83,7 @@ function MyAnimeList() {
                     />
                     <span>Title: {item.title}</span>
                     <br />
-                    <span>Owner: {item._id}</span>
+                    <span>Owner: {item.animeOwner.userName}</span>
                   </Link>
                   <button
                     className="w-100 btn btn-lg btn-primary"

@@ -40,10 +40,10 @@ function UpdateProfile() {
   ] = UserNameValidator();
   const [password, handlePwOnChange, passwordError, setPwOnFocus, setPwOnBlur] =
     PasswordValidator();
-  const [comfirmPassword, setComfirmPassword] = useState("");
-
+  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
   const { CheckToken } = checkJwtToken();
+
   useEffect(() => {
     if (CheckToken()) {
       navigate("/Profile");
@@ -58,7 +58,7 @@ function UpdateProfile() {
         lastName,
         userName,
         password,
-        comfirmPassword,
+        confirmPassword,
       });
       toast.success("Success", {
         position: "top-center",
@@ -71,7 +71,7 @@ function UpdateProfile() {
       });
       console.log(payload);
       window.localStorage.removeItem("jwtToken");
-      navigate("/sign-in");
+      navigate("/");
     } catch (e) {
       toast.error(e.response.data.error, {
         position: "top-center",
@@ -88,14 +88,7 @@ function UpdateProfile() {
   return (
     <>
       <div className="form-div-signin">
-        <div
-          style={{
-            marginTop: 50,
-            color: "#fff",
-            marginLeft: 14,
-            display: "flex",
-          }}
-        >
+        <div className="div_title">
           <h1>Welcome </h1>
           <h1 style={{ color: "red", marginLeft: 5 }}> {user.userName}</h1>
         </div>
@@ -170,7 +163,7 @@ function UpdateProfile() {
               className="form-control"
               id="floatingPassword"
               placeholder="Password"
-              type="text"
+              type="password"
               onChange={handlePwOnChange}
               onFocus={() => setPwOnFocus(true)}
               onBlur={() => setPwOnBlur(true)}
@@ -183,10 +176,8 @@ function UpdateProfile() {
               className="form-control"
               id="floatingPassword"
               placeholder="Comfirm Password"
-              type="text"
-              onChange={(e) => setComfirmPassword(e.target.value)}
-              onFocus={() => setPwOnFocus(true)}
-              onBlur={() => setPwOnBlur(true)}
+              type="password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
             ></input>
           </div>
           <div className="checkbox mb-3"></div>

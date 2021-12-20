@@ -6,6 +6,7 @@ import MangaBanner from "../Banner/MangaBanner";
 import AxiosBackend from "../lib/axiosBackend";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./manga.css";
 function MangaDetails() {
   const [mangaList, setMangaList] = useState(null);
   const { id } = useParams();
@@ -52,16 +53,16 @@ function MangaDetails() {
       {loading ? (
         <Loading />
       ) : (
-        <div>
-          <div style={{ marginTop: 30, color: "#fff" }}>
+        <div className="main_div">
+          <div className="title_div">
             <img
-              style={{ marginLeft: "45%", height: 400 }}
+              lassName="img_content"
               src={mangaList.image_url}
               alt={mangaList.title}
             />
           </div>
-          <div style={{ marginLeft: "43%", height: "fit-content" }}>
-            <table style={{ marginTop: 30, color: "#fff" }}>
+          <div className="table_div">
+            <table className="table_content">
               <tbody>
                 <tr>
                   <td>Title: </td>
@@ -105,7 +106,7 @@ function MangaDetails() {
             </table>
             <button
               onClick={() => handleAddToMylist(mangaList)}
-              className="w-100 btn btn-lg btn-primary"
+              className="w-100 btn btn-lg btn-primary anime"
               style={{
                 backgroundColor: "red",
                 color: "#fff",

@@ -1,0 +1,26 @@
+.table_content {
+  margin-top: 30px;
+  color: #fff;
+}
+.title_div {
+  margin-top: 60px;
+  color: #fff;
+}
+.img_content {
+  margin-left: 0%;
+  height: 400px;
+}
+.table_div {
+  margin-left: 0%;
+  height: fit-content;
+}
+@media only screen and (max-width: 414px) {
+  .img_content {
+    margin-left: -10%;
+    height: 400px;
+  }
+  .table_div {
+    margin-left: -27%;
+    height: fit-content;
+  }
+}
